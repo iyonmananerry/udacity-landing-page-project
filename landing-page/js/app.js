@@ -38,25 +38,24 @@ for (let i = 0; i < sections.length; i++) {
 
 }
 //selecting all values that have the class .navnar_list //
-let selectedli =document.querySelectorAll('.navbar_list')
+let selectedli = document.querySelectorAll('.navbar_list')
 //looping through every list //
-selectedli.forEach( (anLi) =>{
+selectedli.forEach((anLi) => {
     //appending an anchor tag to each list //
-   let activeAnchor = anLi.appendChild(anchorTag.cloneNode())
- 
-} )
+    let activeAnchor = anLi.appendChild(anchorTag.cloneNode())
+
+})
 // selecting all anchor tags //
 let allAnchor = document.querySelectorAll("a");
-for(i= 1; i <= sections.length; i++) 
-{ 
+for (i = 1; i <= sections.length; i++) {
 
-  //setting attribute for each anchor element in the allAnchor array
-  //by their index.
-  allAnchor[i-1].setAttribute("href",`#section${i}`);
-  //appending a text node to each anchor element 
-  allAnchor[i-1].appendChild(document.createTextNode(`section${i}`))
-  //appending a class to each anchor element . 
-  allAnchor[i-1].classList.add("menu__link");
+    //setting attribute for each anchor element in the allAnchor array
+    //by their index.
+    allAnchor[i - 1].setAttribute("href", `#section${i}`);
+    //appending a text node to each anchor element 
+    allAnchor[i - 1].appendChild(document.createTextNode(`section${i}`))
+    //appending a class to each anchor element . 
+    allAnchor[i - 1].classList.add("menu__link");
 }
 
 //an event that fires when the window of the browser is been scrolled . 
@@ -69,15 +68,15 @@ window.addEventListener("scroll", (event) => {
         // than zero .
         //the else statement will remove the preset class if the condition is 
         // false 
-        if(sectionMeasurements.top >= 0 && sectionMeasurements.bottom >0)
-        {
+        if (sectionMeasurements.top >= 0 && sectionMeasurements.bottom > 0) {
             //give the current section in view the class of your-active-class 
             section.classList.add("your-active-class");
+            section.classList.add('active')
         }
-        else 
-        {
+        else {
             //if the section is not in view remove the active class from it 
             section.classList.remove("your-active-class");
+            section.classList.add('active')
         }
     })
 
@@ -87,7 +86,7 @@ window.addEventListener("scroll", (event) => {
 /**
  * End Global Variables
  * Start Helper Functions
- * 
+ *
 */
 
 
@@ -95,7 +94,7 @@ window.addEventListener("scroll", (event) => {
 /**
  * End Helper Functions
  * Begin Main Functions
- * 
+ *
 */
 
 
