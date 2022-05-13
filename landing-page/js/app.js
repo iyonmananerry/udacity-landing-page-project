@@ -71,12 +71,12 @@ window.addEventListener("scroll", (event) => {
         if (sectionMeasurements.top >= 0 && sectionMeasurements.bottom > 0) {
             //give the current section in view the class of your-active-class 
             section.classList.add("your-active-class");
-            section.classList.add('active')
+        
         }
         else {
             //if the section is not in view remove the active class from it 
             section.classList.remove("your-active-class");
-            section.classList.add('active')
+        
         }
     })
 
