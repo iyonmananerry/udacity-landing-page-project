@@ -37,8 +37,9 @@ for (let i = 0; i < sections.length; i++) {
     activeLi.setAttribute('class', 'navbar_list')
 
 }
-//selecting all values that have the class .navnar_list //
+//selecting all values that have the class .navbar_list //
 let selectedli = document.querySelectorAll('.navbar_list')
+selectedli[0].classList.add('active')
 //looping through every list //
 selectedli.forEach((anLi) => {
     //appending an anchor tag to each list //
@@ -58,7 +59,16 @@ for (i = 1; i <= sections.length; i++) {
     allAnchor[i - 1].classList.add("menu__link");
 }
 
-//an event that fires when the window of the browser is been scrolled . 
+
+//an hashmap where the key will be the section and the value is the corresponding li element // 
+let hashmap = new Map();
+sections.forEach(function (section, index) {
+    hashmap.set(section, selectedli[index])
+
+})
+console.log(hashmap)
+selectedli[0].classList.add('active')
+//an event that fires when the window of the browser is been scrolled .
 window.addEventListener("scroll", (event) => {
     event.preventDefault();
     sections.forEach(section => {
@@ -68,19 +78,24 @@ window.addEventListener("scroll", (event) => {
         // than zero .
         //the else statement will remove the preset class if the condition is 
         // false 
-        if (sectionMeasurements.top >= 0 && sectionMeasurements.bottom > 0) {
-            //give the current section in view the class of your-active-class 
-            section.classList.add("your-active-class");
-        
+        if (
+            sectionMeasurements.top >= 0 && sectionMeasurements.bottom > 0 &&
+            sectionMeasurements.bottom <= (window.innerHeight ||
+                document.documentElement.clientHeight) &&
+            sectionMeasurements.right <= (window.innerWidth ||
+                document.documentElement.clientWidth)) {
+            section.classList.add('your-active-class');
+            hashmap.get(section).classList.add('active');
         }
         else {
-            //if the section is not in view remove the active class from it 
-            section.classList.remove("your-active-class");
-        
+            section.classList.remove('your-active-class');
+            hashmap.get(section).classList.remove('active');
         }
     })
 
 })
+
+
 
 
 /**
