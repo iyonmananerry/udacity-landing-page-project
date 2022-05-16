@@ -30,12 +30,13 @@ const sections = document.querySelectorAll('section');
 const li = document.createElement("li");
 // creating an anchor tag //
 const anchorTag = document.createElement('a');
+
+let activeLi;
 for (let i = 0; i < sections.length; i++) {
     //appending list elements to the ul node //
-    let activeLi = ul.appendChild(li.cloneNode());
+    activeLi = ul.appendChild(li.cloneNode());
     //set the attribute of list //
     activeLi.setAttribute('class', 'navbar_list')
-
 }
 //selecting all values that have the class .navbar_list //
 let selectedli = document.querySelectorAll('.navbar_list')
@@ -60,13 +61,14 @@ for (i = 1; i <= sections.length; i++) {
 }
 
 
+
 //an hashmap where the key will be the section and the value is the corresponding li element // 
 let hashmap = new Map();
 sections.forEach(function (section, index) {
     hashmap.set(section, selectedli[index])
 
 })
-console.log(hashmap)
+
 selectedli[0].classList.add('active')
 //an event that fires when the window of the browser is been scrolled .
 window.addEventListener("scroll", (event) => {
@@ -92,7 +94,18 @@ window.addEventListener("scroll", (event) => {
             hashmap.get(section).classList.remove('active');
         }
     })
+})
 
+
+allAnchor.forEach(anchor => {
+    addEventListener('click', (e) => {
+        e.preventDefault();
+        anchorAttribute = e.target.getAttribute("href");
+        document.querySelector(anchorAttribute).scrollIntoView({
+            behavior: "smooth",
+            block: 'start'
+        })
+    })
 })
 
 
@@ -103,7 +116,6 @@ window.addEventListener("scroll", (event) => {
  * Start Helper Functions
  *
 */
-
 
 
 /**
