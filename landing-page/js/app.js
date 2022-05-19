@@ -100,8 +100,8 @@ window.addEventListener("scroll", (event) => {
 allAnchor.forEach(anchor => {
     addEventListener('click', (e) => {
         e.preventDefault();
-        anchorAttribute = e.target.getAttribute("href");
-        document.querySelector(anchorAttribute).scrollIntoView({
+        anchor = e.target.getAttribute("href");
+        document.querySelector(anchor).scrollIntoView({
             behavior: "smooth",
             block: 'start'
         })
